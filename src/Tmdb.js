@@ -8,7 +8,7 @@ const basicFetch = async (endpoint) => {
     return json
 };
 
-export default {
+const Tmdb = {
     getHomeList: async () => {
         return [
             {
@@ -20,13 +20,13 @@ export default {
             {
                 slug: 'trending',
                 title: 'Trending now',
-                items: await basicFetch(`/trending/all/week&api_key=${API_KEY}`),
+                items: await basicFetch(`/trending/all/week?api_key=${API_KEY}`),
             },
 
             {
                 slug: 'toprated',
                 title: 'Top 10 today',
-                items: await basicFetch(`/movie/top_rated&api_key=${API_KEY}`),
+                items: await basicFetch(`/movie/top_rated?api_key=${API_KEY}`),
             },
 
             {
@@ -62,3 +62,5 @@ export default {
     }
 
 }
+
+export default Tmdb;
