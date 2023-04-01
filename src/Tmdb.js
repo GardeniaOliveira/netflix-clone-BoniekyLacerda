@@ -19,7 +19,7 @@ const Tmdb = {
 
             {
                 slug: 'trending',
-                title: 'Trending now',
+                title: 'Featured for you',
                 items: await basicFetch(`/trending/all/week?api_key=${API_KEY}`),
             },
 
@@ -37,7 +37,7 @@ const Tmdb = {
 
             {
                 slug: 'comedy',
-                title: 'Comedy',
+                title: 'Comedies',
                 items: await basicFetch(`/discover/movie?with_genres=35&api_key=${API_KEY}`),
             },
 
@@ -55,7 +55,7 @@ const Tmdb = {
 
             {
                 slug: 'documentary',
-                title: 'Documentary',
+                title: 'Documentaries',
                 items: await basicFetch(`/discover/movie?with_genres=99&api_key=${API_KEY}`),
             },
         ]
