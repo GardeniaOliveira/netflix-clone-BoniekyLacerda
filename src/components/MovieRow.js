@@ -1,7 +1,7 @@
 import './MovieRow.css'
 
 const MovieRow = ({ title, items }) => {
-    console.log(items);
+    // console.log(items);
 
     return (
         <div className='movieRow'>
