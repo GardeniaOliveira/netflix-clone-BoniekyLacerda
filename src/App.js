@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 
 import './App.css'
 import Tmdb from "./Tmdb";
-import MovieRow from "./components/MovieRow";
+import Header from "./components/Header";
 import FeaturedMovie from "./components/FeaturedMovie";
+import MovieRow from "./components/MovieRow";
 
 const App = () => {
 
   const [movieList, setMovieList] = useState([])
   const [featuredData, setFeaturedData] = useState(null)
+  const [headerBlack, setHeaderBlack] = useState(false)
 
   useEffect(() => {
     //when the screen loads to do it: 
@@ -29,8 +31,29 @@ const App = () => {
     loadAll();
   }, [])
 
+
+  useEffect(() => {
+    const scrollListener = (e) => {
+      if (window.scrollY > 10) {
+        setHeaderBlack(true)
+      } else {
+        setHeaderBlack(false)
+      }
+
+    }
+    window.addEventListener('scroll', scrollListener)
+    return () => {
+      window.removeEventListener('scroll', scrollListener)
+    }
+  }, []);
+
+
   return (
+
     <div className="page">
+
+      <Header black={headerBlack} />
+
       {/* when there is a feature movie, so showed the component  */}
       {featuredData &&
         <FeaturedMovie item={featuredData} />
