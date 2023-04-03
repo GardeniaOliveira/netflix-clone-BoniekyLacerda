@@ -64,6 +64,9 @@ const App = () => {
 
         ))}
       </section>
+      <footer>
+        Project based on Bonieky Lacerda's tutorial -  Netflix Image rights - Data from The Movie Database Api  <br />
+      </footer>
 
     </div>
   )
