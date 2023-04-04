@@ -68,6 +68,12 @@ const App = () => {
         Project based on Bonieky Lacerda's tutorial -  Netflix Image rights - Data from The Movie Database Api  <br />
       </footer>
 
+      {movieList.length <= 0 &&
+        <div className="loading">
+          <img src="https://media.filmelier.com/noticias/br/2020/03/Netflix_LoadTime.gif" alt="Loading..." />
+        </div>
+      }
+
     </div>
   )
 }
