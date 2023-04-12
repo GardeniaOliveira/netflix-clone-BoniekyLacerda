@@ -1,6 +1,6 @@
-import './Header.css'
-import logo from '../images/netflix-logo.png'
-import avatar from '../images/netflix-avatar.png'
+import './styles.css'
+import logo from '../../images/netflix-logo.png'
+import avatar from '../../images/netflix-avatar.png'
 
 
 const Header = ({ black }) => {
