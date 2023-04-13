@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 
-import './styles.css'
+import styles from './styles.module.css'
 import Tmdb from "../../Tmdb";
 import Header from "../../components/Header";
 import FeaturedMovie from "../../components/FeaturedMovie";

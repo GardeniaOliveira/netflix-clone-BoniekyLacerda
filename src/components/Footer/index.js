@@ -1,9 +1,11 @@
-import './styles.css'
+import styles from './styles.module.css'
 
 
-const Footer = ({ black }) => {
+const Footer = ({ children }) => {
     return (
-        <footer></footer>
+        <footer className={styles['footer']}>
+            {children}
+        </footer>
     )
 }
 
