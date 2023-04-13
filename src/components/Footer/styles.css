@@ -1,0 +1,11 @@
+footer {
+  background: rgba(0, 0, 0, 0.75);
+  margin-top: 0;
+  color: #757575;
+  font-size: 1em;
+  margin-top: 80px;
+  min-width: 190px;
+  padding-bottom: 20px;
+  position: relative;
+  width: 100%;
+}

@@ -12,8 +12,9 @@ header.black {
   background-color: #141414;
 }
 .header-logo {
-  width: 167px;
-  height: 95px;
+  width: 180px;
+  height: 125px;
+  padding-top: 30px;
 }
 
 .header-logo img {

@@ -3,9 +3,9 @@ import logo from '../../images/netflix-logo.png'
 
 
 
-const HeaderLogo = ({ black }) => {
+const HeaderLogo = () => {
     return (
-        <header className={black ? 'black' : ''}>
+        <header>
             <div className='header-logo'>
                 <a href="https://www.netflix.com/browse">
                     <img src={logo} alt="Netflix logo" />
