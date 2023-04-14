@@ -1,4 +1,5 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import styles from './styles.module.css'
 import HeaderLogo from "../../components/HeaderLogo";
@@ -7,10 +8,18 @@ import Footer from "../../components/Footer";
 
 const SignIn = () => {
     const navigate = useNavigate();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const loginUser = data => {
+        console.log(data)
+        if (data.username && data.password) {
+            navigate("/movies");
+        }
+
+    };
 
     const [isChecked, setIsChecked] = useState(true);
     const handleOnChange = () => {
-        setIsChecked(isChecked);
+        setIsChecked(!isChecked);
     };
 
     const [info, setInfo] = useState(false);
@@ -19,40 +28,23 @@ const SignIn = () => {
 
     };
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
 
-    console.log(username)
-    console.log(password)
-
-    const handleLogin = async () => {
-        if (username && password) {
-            navigate("/movies");
-            // const isLogged = await auth.signin(username, password);
-            // if (isLogged) {
-            //     navigate("/movies");
-            // } else {
-            //     alert("email or password is invalid");
-            // }
-        }
-    };
     return (
         <div className={styles['container-background-img']}>
             <div className={styles['container-background-opacity']}></div>
 
             <div className={styles['container']}>
                 <HeaderLogo />
-                <form action="">
+                <form onSubmit={handleSubmit(loginUser)}>
                     <h1>Sign In</h1>
 
                     <div className={styles["form-element"]}>
                         <input
                             type="text"
-                            name="username"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
+                            {...register("username", { required: true })}
+
+
+
                         />
                         <label className={styles["floating-label"]} htmlFor="username">Email or Phone Number</label>
                     </div>
@@ -60,21 +52,21 @@ const SignIn = () => {
                     <div className={styles["form-element"]}>
                         <input
                             type="password"
-                            name="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required />
+                            {...register("password", { required: true })}
+
+                        />
                         <label className={styles["floating-label"]} htmlFor="password">Password</label>
                     </div>
-                    <button onClick={handleLogin}>Sign In</button>
+
+                    <button type='submit'>Sign In</button>
+
 
                     <div className={styles['form-remember-help']}>
                         <div className={styles['form-remember']}>
                             <input
                                 type="checkbox"
                                 checked={isChecked}
-                                {...`${isChecked} ? "checked" : "un-checked"`}
+
                                 onChange={handleOnChange}
                             />
 
