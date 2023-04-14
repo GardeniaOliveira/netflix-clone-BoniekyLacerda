@@ -20,8 +20,16 @@ const SignIn = () => {
                 <HeaderLogo />
                 <form action="">
                     <h1>Sign In</h1>
-                    <input type="email" placeholder='Email or phone number' className={styles['input--email']} />
-                    <input type="password" placeholder='Password' className={styles['input--password']} />
+
+                    <div className={styles["form-element"]}>
+                        <input type="text" name="username" id="username" required />
+                        <label className={styles["floating-label"]} for="username">Email or Phone Number</label>
+                    </div>
+
+                    <div className={styles["form-element"]}>
+                        <input type="password" name="password" id="password" required />
+                        <label className={styles["floating-label"]} for="password">Password</label>
+                    </div>
                     <button>Sign In</button>
 
                     <div className={styles['form-remember-help']}>
