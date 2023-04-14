@@ -92,6 +92,12 @@ input:valid ~ .floating-label {
   font-size: 11px;
   top: 7px;
 }
+.inputError {
+  color: #e87c03;
+  margin-bottom: -6px;
+  padding: 6px 3px;
+  font-size: 13px;
+}
 form button {
   height: 50px;
   background: #e50914;
@@ -175,6 +181,7 @@ h5 {
   font-size: 16px;
   font-weight: 400;
 }
+
 .footer-links {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

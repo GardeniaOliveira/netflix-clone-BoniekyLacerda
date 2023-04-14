@@ -42,10 +42,9 @@ const SignIn = () => {
                         <input
                             type="text"
                             {...register("username", { required: true })}
-
-
-
+                            id='username'
                         />
+                        {errors.username && <span className={styles["inputError"]}>Please enter a valid email or phone number.</span>}
                         <label className={styles["floating-label"]} htmlFor="username">Email or Phone Number</label>
                     </div>
 
@@ -53,8 +52,10 @@ const SignIn = () => {
                         <input
                             type="password"
                             {...register("password", { required: true })}
+                            id='password'
 
                         />
+                        {errors.password && <span className={styles["inputError"]}>Your password must contain between 4 and 60 characters.</span>}
                         <label className={styles["floating-label"]} htmlFor="password">Password</label>
                     </div>
 
@@ -91,7 +92,10 @@ const SignIn = () => {
                 </form>
 
             </div >
-            <Footer>
+            <Footer
+                backgroundColor='rgba(0, 0, 0, 0.75)'
+
+            >
                 <h5> Questions? Call 800 855 855</h5>
 
                 <div className={styles['footer-links']}>
@@ -116,7 +120,7 @@ const SignIn = () => {
                     </div>
                     <select name="language" className={styles['select-language']} >
                         <option value="english">English</option>
-                        <option value="Portuguese">Portuguese</option>
+                        {/* <option value="Portuguese">Portuguese</option> */}
 
                     </select>
                 </div>

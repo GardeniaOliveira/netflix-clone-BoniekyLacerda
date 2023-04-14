@@ -10,6 +10,7 @@ export const Router = () => {
             <Routes>
                 <Route path="/" element={<SignIn />} />
                 <Route path="/signUp" element={<SignUp />} />
+
                 <Route path="/movies" element={<Movies />} />
             </Routes>
         </BrowserRouter>

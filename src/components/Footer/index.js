@@ -1,10 +1,12 @@
 import styles from './styles.module.css'
 
 
-const Footer = ({ children }) => {
+const Footer = ({ backgroundColor, children }) => {
     return (
-        <footer className={styles['footer']}>
+        <footer className={styles['footer']} style={{ backgroundColor: backgroundColor }} >
+
             {children}
+
         </footer>
     )
 }
