@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
 import styles from './styles.module.css'
 import HeaderLogo from "../../components/HeaderLogo";
 import Footer from "../../components/Footer";
 
 
 const SignIn = () => {
+    const navigate = useNavigate();
+
+    const [isChecked, setIsChecked] = useState(true);
+    const handleOnChange = () => {
+        setIsChecked(isChecked);
+    };
 
     const [info, setInfo] = useState(false);
     const handleShowInfo = (info) => {
@@ -12,6 +19,23 @@ const SignIn = () => {
 
     };
 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    console.log(username)
+    console.log(password)
+
+    const handleLogin = async () => {
+        if (username && password) {
+            navigate("/movies");
+            // const isLogged = await auth.signin(username, password);
+            // if (isLogged) {
+            //     navigate("/movies");
+            // } else {
+            //     alert("email or password is invalid");
+            // }
+        }
+    };
     return (
         <div className={styles['container-background-img']}>
             <div className={styles['container-background-opacity']}></div>
@@ -22,21 +46,41 @@ const SignIn = () => {
                     <h1>Sign In</h1>
 
                     <div className={styles["form-element"]}>
-                        <input type="text" name="username" id="username" required />
-                        <label className={styles["floating-label"]} for="username">Email or Phone Number</label>
+                        <input
+                            type="text"
+                            name="username"
+                            id="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                        <label className={styles["floating-label"]} htmlFor="username">Email or Phone Number</label>
                     </div>
 
                     <div className={styles["form-element"]}>
-                        <input type="password" name="password" id="password" required />
-                        <label className={styles["floating-label"]} for="password">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required />
+                        <label className={styles["floating-label"]} htmlFor="password">Password</label>
                     </div>
-                    <button>Sign In</button>
+                    <button onClick={handleLogin}>Sign In</button>
 
                     <div className={styles['form-remember-help']}>
                         <div className={styles['form-remember']}>
-                            <input type="checkbox" checked />
+                            <input
+                                type="checkbox"
+                                checked={isChecked}
+                                {...`${isChecked} ? "checked" : "un-checked"`}
+                                onChange={handleOnChange}
+                            />
+
                             <label>Remember me </label>
                         </div>
+
 
                         <div className={styles['form-help']}>
                             <a href='https://www.netflix.com/pt-en/login'>Need help?</a>
@@ -59,12 +103,19 @@ const SignIn = () => {
                 <h5> Questions? Call 800 855 855</h5>
 
                 <div className={styles['footer-links']}>
-                    <a href="https://help.netflix.com/en/node/412">FAQ</a>
+                    {/* <a href="https://help.netflix.com/en/node/412">FAQ</a>
                     <a href="https://help.netflix.com/en/">Help Center</a>
                     <a href="https://help.netflix.com/legal/termsofuse">Terms of Use</a>
                     <a href="https://help.netflix.com/legal/privacy">Privacy</a>
                     <a href="https://www.netflix.com/pt-en/login#">Cookie Preferences</a>
-                    <a href="https://help.netflix.com/legal/corpinfo">Corporate Information</a>
+                    <a href="https://help.netflix.com/legal/corpinfo">Corporate Information</a> */}
+
+                    <a href="https://github.com/GardeniaOliveira">FAQ</a>
+                    <a href='https://github.com/GardeniaOliveira' >Help Center</a>
+                    <a href="https://github.com/GardeniaOliveira">Terms of Use</a>
+                    <a href="https://github.com/GardeniaOliveira">Privacy</a>
+                    <a href="https://github.com/GardeniaOliveira">Cookie Preferences</a>
+                    <a href="https://github.com/GardeniaOliveira">Corporate Information</a>
                 </div>
 
                 <div className={styles["footer-language"]}>
