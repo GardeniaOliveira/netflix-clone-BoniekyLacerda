@@ -26,7 +26,7 @@ const SignUp = () => {
                         <div className={styles["form-element"]}>
                             <input type="email" />
                             <label className={styles["floating-label"]} htmlFor="password">Password</label>
-                            <button>Get Start  </button>
+                            <button>{`Get Start >`} </button>
                         </div>
                     </section>
                 </div>
