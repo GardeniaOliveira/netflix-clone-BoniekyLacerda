@@ -1,18 +1,24 @@
 .container-background-img {
-  /* background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/61e79073-50cf-4f7b-9a23-73290e6f7dca/4a2ba8b2-e560-4ee8-ac64-62dfe5272a1f/PT-en-20230410-popsignuptwoweeks-perspective_alpha_website_large.jpg"); */
   background-size: cover;
   background-image: linear-gradient(
-      103.24deg,
-      rgba(0, 8, 29, 0.9) 23.83%,
-      rgba(0, 8, 29, 0.3) 96.1%
+      rgba(0, 0, 0, 0.8) 0,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.8) 100%
     ),
     url(https://assets.nflxext.com/ffe/siteui/vlv3/61e79073-50cf-4f7b-9a23-73290e6f7dca/4a2ba8b2-e560-4ee8-ac64-62dfe5272a1f/PT-en-20230410-popsignuptwoweeks-perspective_alpha_website_large.jpg);
 
   display: block;
   width: 100%;
   min-height: 100vh;
-  position: absolute;
   z-index: -1;
+}
+.container-opacity {
+  background: rgb(0 0 0 / 40%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 .container {
   min-height: 100vh;
@@ -22,6 +28,91 @@
   align-content: center;
   justify-content: center;
   align-items: center;
+  z-index: 2;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1824px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+.description h1 {
+  font-size: 3rem;
+  font-weight: 900;
+}
+.description h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: 16px;
+}
+.description p {
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  margin-top: 16px;
+}
+.form-element {
+  position: relative;
+  padding-bottom: 16px;
+  display: flex;
+  gap: 10px;
+  margin: 1rem auto 0;
+  width: 100%;
+  max-width: 36.625rem;
+}
+.form-element input {
+  box-sizing: border-box;
+  transition: color 250ms cubic-bezier(0.5, 0, 0.1, 1) 0s;
+  flex: 0 0 auto;
+  color: transparent;
+  line-height: 1.5rem;
+  padding: 16px 24px 8px;
+  background: rgba(22, 22, 22, 0.7);
+  border-color: rgba(128, 128, 128, 0.7);
+}
+.form-element button {
+  width: 100%;
+  margin: 0px;
+  text-decoration: none;
+  border: 0px;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 250ms;
+  transition-property: background-color, border-color;
+  transition-timing-function: cubic-bezier(0.9, 0, 0.51, 1);
+  vertical-align: text-top;
+  width: auto;
+  font-size: 1.5rem;
+  font-weight: 500;
+  min-height: 3.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgb(229, 9, 20);
+  color: rgb(255, 255, 255);
+}
+
+.floating-label {
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  top: 25%;
+  left: 20px;
+  font-size: 18px;
+  cursor: text;
+  color: #8c8c8c;
+  transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease;
+  transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease,
+    -webkit-transform 0.1s ease, -moz-transform 0.1s ease,
+    -o-transform 0.1s ease;
+}
+input:focus ~ .floating-label,
+input:valid ~ .floating-label {
+  font-size: 11px;
+  top: 7px;
 }
 
 h5 {
@@ -34,7 +125,7 @@ h5 {
 
 .footer-links {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   color: rgba(255, 255, 255, 0.7);
 }
 

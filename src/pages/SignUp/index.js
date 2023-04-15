@@ -11,15 +11,29 @@ const SignUp = () => {
 
 
     return (
-        <div className={styles['container-background-img']}>
-            <div className={styles['container-background-opacity']}></div>
+        <div>
+            <div className={styles['container-background-img']}>
+                <div className={styles['container-opacity']}></div>
+                <div className={styles['container']}>
+                    <HeaderLogo />
 
-            <div className={styles['container']}>
-                <HeaderLogo />
-            </div>
+                    <section className={styles['description']}>
+                        <h1>Unlimited movies, TV shows, and more.</h1>
+
+                        <h3>Watch anywhere. Cancel anytime.</h3>
+
+                        <p>Ready to watch? Enter your email to create or restart your membership.</p>
+                        <div className={styles["form-element"]}>
+                            <input type="email" />
+                            <label className={styles["floating-label"]} htmlFor="password">Password</label>
+                            <button>Get Start  </button>
+                        </div>
+                    </section>
+                </div>
+            </div >
 
             <Footer
-                backgroundColor='rgb(0, 8, 29)'
+                backgroundColor='black'
             >
                 <h5> Questions? Call 800 855 855</h5>
 
@@ -58,8 +72,7 @@ const SignUp = () => {
 
 
             </Footer>
-
-        </div >
+        </div>
     )
 }
 
