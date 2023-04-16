@@ -4,7 +4,12 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 
 import HeaderLogo from "../../components/HeaderLogo";
+import CardStory from './CardStory';
 import Footer from "../../components/Footer";
+import card1 from "../../images/card1.png";
+import card2 from "../../images/card2.png";
+import card3 from "../../images/card3.png";
+
 
 
 const SignUp = () => {
@@ -30,8 +35,18 @@ const SignUp = () => {
                         </div>
                     </section>
                 </div>
+
             </div >
 
+            <div>
+                <CardStory
+                    title='Enjoy on your TV.'
+                    description="Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more."
+                    img={card1}
+                >
+
+                </CardStory>
+            </div>
             <Footer
                 backgroundColor='black'
             >
