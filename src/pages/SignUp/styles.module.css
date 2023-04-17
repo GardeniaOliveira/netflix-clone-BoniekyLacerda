@@ -117,7 +117,51 @@ input:valid ~ .floating-label {
   font-size: 11px;
   top: 7px;
 }
+.accordion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+.accordion-container h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 80px 0 30px 0;
+}
+.accordion-container h3 {
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+}
+.accordion {
+  padding: 0 7rem 2.5rem 7rem;
+}
+.accordion-item {
+  padding: 0.7rem;
+  transition-duration: 250ms;
+  transition-property: background-color;
+  transition-timing-function: cubic-bezier(0.9, 0, 0.51, 1);
+}
+.accordion div {
+  background-color: rgba(45, 45, 45, 1);
+  color: rgba(255, 255, 255, 1);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
 
+.accordion div:hover,
+.accordion-item:hover {
+  background-color: rgb(123, 116, 116);
+}
+.accordion div p {
+  color: rgba(255, 255, 255, 1);
+  font-size: 24px;
+  font-weight: 500;
+}
+.accordion-form {
+  margin-bottom: 60px;
+}
 h5 {
   text-align: left;
   padding: 20px 0;
@@ -134,7 +178,6 @@ h5 {
 
 .footer-links a {
   color: rgba(255, 255, 255, 0.7);
-
   text-align: left;
   padding: 10px 0;
   cursor: pointer;
