@@ -1,13 +1,26 @@
 .card-container {
-  min-height: 43.75rem;
-  padding: 9.875rem 0 9.875rem 150px;
+  min-height: 30rem;
   background-color: black;
   display: flex;
+
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.card-container-rowReverse {
+  /* min-height: 43.75rem; */
+  min-height: 30rem;
+  background-color: black;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .card-content {
   width: 50%;
   min-height: auto;
-  padding: 50px 0 20px 50px;
+  padding: 0 20px;
 }
 .card-content h1 {
   font-size: 3rem;
@@ -20,8 +33,10 @@
   margin: 1rem 0 0;
 }
 .card-img {
-  width: 60%;
-  height: 100%;
+  max-width: 400px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
 }
 
 .card-img img {
