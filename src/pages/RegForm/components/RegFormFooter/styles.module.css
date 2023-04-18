@@ -1,0 +1,49 @@
+.footer {
+  margin: 0;
+  background-color: #f3f3f3;
+  font-size: 1em;
+  padding: 3rem 7rem;
+  position: relative;
+  width: 100%;
+}
+.footer h5 {
+  text-align: left;
+  padding: 20px 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #737373;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  color: #737373;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #737373;
+  font-size: 13px;
+  text-align: left;
+  padding: 10px 0;
+}
+.footer-language {
+  width: 150px;
+  display: flex;
+  background-color: white;
+  background-image: none;
+  border: 1px solid #a6a6a6;
+  margin: 10px 0;
+  padding: 10px;
+  gap: 5px;
+}
+.footer-language:hover {
+  border: 1px solid white;
+}
+
+.select-language {
+  color: #737373;
+  background-color: white;
+  font-weight: 500;
+  border: none;
+}

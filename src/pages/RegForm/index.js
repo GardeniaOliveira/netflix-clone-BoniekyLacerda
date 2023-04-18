@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import styles from './styles.module.css'
 
 import logo from "../../images/netflix-logo.png";
-import Footer from "../../components/Footer";
+import Header from './components/RegFormHeader';
+import Footer from './components/RegFormFooter';
 
 
 const RegForm = () => {
@@ -31,19 +32,14 @@ const RegForm = () => {
 
     return (
         <div className={styles['container-background']}>
+            <Header
+                logo={logo}
+                text='Sign In'
 
+            />
 
             <div className={styles['container']}>
-                <div className={styles['header-container']}>
-                    <div className={styles['header-logo']}>
-                        <img src={logo} alt="Netflix logo" />
-                    </div>
 
-                    <div className={styles['header-items']}>
-                        <button type='submit' >Sign In </button>
-                        {/* onClick={handleSubmit(login)} */}
-                    </div>
-                </div>
                 <form className={styles['form']}>
                     <p className={styles['step']}>STEP <span>1</span>  OF <span>3</span></p>
 
@@ -88,37 +84,8 @@ const RegForm = () => {
                 </form>
 
             </div >
-            <Footer
-                backgroundColor='#f3f3f3'
 
-            >
-                <h5> Questions? Call 800 855 855</h5>
-
-                <div className={styles['footer-links']}>
-
-                    <a href="https://github.com/GardeniaOliveira">FAQ</a>
-                    <a href='https://github.com/GardeniaOliveira' >Help Center</a>
-                    <a href="https://github.com/GardeniaOliveira">Netflix Shop</a>
-                    <a href="https://github.com/GardeniaOliveira">Terms of Use</a>
-                    <a href="https://github.com/GardeniaOliveira">Privacy</a>
-                    <a href="https://github.com/GardeniaOliveira">Cookie Preferences</a>
-                    <a href="https://github.com/GardeniaOliveira">Corporate Information</a>
-                </div>
-
-                <div className={styles["footer-language"]}>
-                    <div className="icon">
-                        🌐
-                    </div>
-                    <select name="language" className={styles['select-language']} >
-                        <option value="english">English</option>
-                        <option value="Portuguese">Portuguese</option>
-
-                    </select>
-                </div>
-
-
-            </Footer>
-
+            <Footer />
         </div >
     )
 }
