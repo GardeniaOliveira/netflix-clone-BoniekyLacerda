@@ -70,7 +70,7 @@
   width: 100%;
   box-sizing: border-box;
   transition: color 250ms cubic-bezier(0.5, 0, 0.1, 1) 0s;
-  color: transparent;
+  color: white;
   line-height: 1.5rem;
   padding: 16px 24px 8px;
   background: rgba(22, 22, 22, 0.7);
@@ -86,7 +86,6 @@
   cursor: pointer;
   position: relative;
   transition-duration: 250ms;
-  transition-property: background-color, border-color;
   transition-timing-function: cubic-bezier(0.9, 0, 0.51, 1);
   vertical-align: text-top;
   width: auto;
@@ -100,7 +99,6 @@
 
 .floating-label {
   box-sizing: border-box;
-  width: 100%;
   position: absolute;
   top: 25%;
   left: 20px;
@@ -150,8 +148,9 @@ input:valid ~ .floating-label {
   margin-bottom: 0.5rem;
 }
 
-.accordion div:hover,
-.accordion-item:hover {
+.accordion-container p:hover,
+.accordion-item:hover,
+.accordion div:hover {
   background-color: rgb(123, 116, 116);
 }
 .accordion div p {

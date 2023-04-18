@@ -22,6 +22,15 @@ import card4 from "../../images/card4.png";
 
 
 const SignUp = () => {
+    const navigate = useNavigate();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const createAccount = data => {
+        console.log(data)
+        if (data.username) {
+            navigate("/");
+        }
+
+    };
 
     return (
         <div>
@@ -37,9 +46,17 @@ const SignUp = () => {
 
                         <p>Ready to watch? Enter your email to create or restart your membership.</p>
                         <div className={styles["form-element"]}>
-                            <input type="email" />
+
+                            <input
+                                type="email" required
+                                {...register("username")}
+                                id='username'
+                            />
                             <label className={styles["floating-label"]} htmlFor="email">Email Address</label>
-                            <button>{`Get Start >`} </button>
+                            <button type='submit' onClick={handleSubmit(createAccount)}>{`Get Start >`} </button>
+                            {errors.username && <span className={styles["inputError"]}>Please enter a valid email address</span>}
+
+
                         </div>
                     </section>
                 </div>
@@ -182,9 +199,13 @@ const SignUp = () => {
                 <div className={styles['accordion-form']}>
                     <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
                     <div className={styles["form-element"]}>
-                        <input type="email" />
+                        <input
+                            type="email" required
+                            {...register("username")}
+                            id='username'
+                        />
                         <label className={styles["floating-label"]} htmlFor="email">Email Address</label>
-                        <button>{`Get Start >`} </button>
+                        <button type='submit' onClick={handleSubmit(createAccount)}>{`Get Start >`} </button>
                     </div>
 
                 </div>
