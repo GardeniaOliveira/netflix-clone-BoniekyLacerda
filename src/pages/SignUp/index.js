@@ -25,6 +25,7 @@ import card4 from "../../images/card4.png";
 const SignUp = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
+
     const createAccount = data => {
         console.log(data)
         if (data.username) {
@@ -77,20 +78,18 @@ const SignUp = () => {
                         <form className={styles["form-element"]} onSubmit={handleSubmit(createAccount)}>
 
                             <input
-                                type="email" required
-                                {...register("username")}
+                                type="email"
+                                {...register("username", { required: true })}
                                 id='username'
                             />
                             <label className={styles["floating-label"]} htmlFor="email">Email Address</label>
 
-                            <button
-                                type='submit'>
+                            <button type='submit'>
                                 {`Get Started >`}
                             </button>
-                            {errors.username && <span className={styles["inputError"]}>Please enter a valid email address</span>}
-
 
                         </form>
+                        {errors.username && <span className={styles["inputError"]}>Please enter a valid email address</span>}
                     </section>
                 </div>
 
@@ -229,16 +228,21 @@ const SignUp = () => {
                     </div>
                     <div className={styles['accordion-form']}>
                         <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
-                        <div className={styles["form-element"]}>
+                        <form className={styles["form-element"]} onSubmit={handleSubmit(createAccount)}>
+
                             <input
-                                type="email" required
-                                {...register("username")}
+                                type="email"
+                                {...register("username", { required: true })}
                                 id='username'
                             />
                             <label className={styles["floating-label"]} htmlFor="email">Email Address</label>
-                            <button type='submit' onClick={handleSubmit(createAccount)}>{`Get Started >`} </button>
-                        </div>
 
+                            <button type='submit'>
+                                {`Get Started >`}
+                            </button>
+
+                        </form>
+                        {errors.username && <span className={styles["inputError"]}>Please enter a valid email address</span>}
                     </div>
 
                 </div>
