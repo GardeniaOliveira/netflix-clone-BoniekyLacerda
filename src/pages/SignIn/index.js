@@ -16,6 +16,11 @@ const SignIn = () => {
         }
 
     };
+    const createAccount = () => {
+
+        navigate("/signUp");
+
+    };
 
     const [isChecked, setIsChecked] = useState(true);
     const handleOnChange = () => {
@@ -35,7 +40,7 @@ const SignIn = () => {
 
             <div className={styles['container']}>
                 <HeaderLogo />
-                <form onSubmit={handleSubmit(loginUser)}>
+                <form className={styles['form']}>
                     <h1>Sign In</h1>
 
                     <div className={styles["form-element"]}>
@@ -59,7 +64,7 @@ const SignIn = () => {
                         <label className={styles["floating-label"]} htmlFor="password">Password</label>
                     </div>
 
-                    <button type='submit'>Sign In</button>
+                    <button type='submit' onClick={handleSubmit(loginUser)}>Sign In</button>
 
 
                     <div className={styles['form-remember-help']}>
@@ -82,7 +87,10 @@ const SignIn = () => {
                     </div>
 
                     <div className={styles['form-info']}>
-                        <h4>New to Netflix? <a href='https://www.netflix.com/pt-en/login'>Sign up now.</a> </h4>
+                        <h4>New to Netflix?
+                            <button onClick={createAccount} >Sign up now.
+                            </button>
+                        </h4>
                         <p>This page is protected by Google reCAPTCHA to ensure you're not a bot. <span className={info ? `${styles['form-info-learn-more-hidden']}` : `${styles['form-info-learn-more']} `} onClick={handleShowInfo}> Learn more.</span></p>
 
                         <p className={info ? styles['form-info-visible'] : styles['form-info-hidden']} >
@@ -120,7 +128,7 @@ const SignIn = () => {
                     </div>
                     <select name="language" className={styles['select-language']} >
                         <option value="english">English</option>
-                        {/* <option value="Portuguese">Portuguese</option> */}
+                        <option value="Portuguese">Portuguese</option>
 
                     </select>
                 </div>

@@ -33,6 +33,12 @@ const SignUp = () => {
 
     };
 
+    const login = () => {
+
+        navigate("/");
+
+    };
+
     return (
 
         <div className={styles['container-background-img']}>
@@ -56,7 +62,7 @@ const SignUp = () => {
 
                                 </select>
                             </div>
-                            <button type='submit' onClick={handleSubmit(createAccount)}>Sign In </button>
+                            <button type='submit' onClick={handleSubmit(login)}>Sign In </button>
                         </div>
                     </div>
 
@@ -68,7 +74,7 @@ const SignUp = () => {
                         <h3>Watch anywhere. Cancel anytime.</h3>
 
                         <p>Ready to watch? Enter your email to create or restart your membership.</p>
-                        <div className={styles["form-element"]}>
+                        <form className={styles["form-element"]} onSubmit={handleSubmit(createAccount)}>
 
                             <input
                                 type="email" required
@@ -76,11 +82,15 @@ const SignUp = () => {
                                 id='username'
                             />
                             <label className={styles["floating-label"]} htmlFor="email">Email Address</label>
-                            <button type='submit' onClick={handleSubmit(createAccount)}>{`Get Started >`} </button>
+
+                            <button
+                                type='submit'>
+                                {`Get Started >`}
+                            </button>
                             {errors.username && <span className={styles["inputError"]}>Please enter a valid email address</span>}
 
 
-                        </div>
+                        </form>
                     </section>
                 </div>
 

@@ -29,7 +29,7 @@
   justify-content: center;
   align-items: center;
 }
-form {
+.form {
   width: 100%;
   max-width: 450px;
   min-height: 525px;
@@ -44,14 +44,14 @@ form {
   margin: 90px 0;
   z-index: 2;
 }
-form a {
+.form a {
   text-decoration: none;
 }
-form a:hover {
+.form a:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-form h1 {
+.form h1 {
   font-size: 36px;
   margin-bottom: 30px;
 }
@@ -149,8 +149,12 @@ form button {
   color: #b3b3b3;
   font-weight: 400;
 }
-.form-info h4 a {
+.form-info h4 button {
   color: white;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding-left: 3px;
 }
 
 .form-info-learn-more,
