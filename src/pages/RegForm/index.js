@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from "react-router-dom";
-import styles from './styles.module.css'
 
+import styles from './styles.module.css'
+import UserContext from '../../contexts/userContext';
 import logo from "../../images/netflix-logo.png";
 import Header from './components/RegFormHeader';
 import Footer from './components/RegFormFooter';
@@ -12,18 +13,21 @@ import Footer from './components/RegFormFooter';
 
 const RegForm = () => {
     const navigate = useNavigate();
+
+    const { user, setUser } = useContext(UserContext)
+
     const schema = object({
         password: string().required().min(4, 'Your password must contain between 4 and 60 characters.')
 
     })
 
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
     });
 
     const createAccount = data => {
-        console.log(data)
+        setUser({ username: data.username, password: data.password });
         if (data.username && data.password) {
             navigate("/signUp/RegForm2");
         }
@@ -60,19 +64,18 @@ const RegForm = () => {
                     <p>Just a few more steps and you're done!</p>
                     <p>We hate paperwork, too.</p>
 
-                    <div className={styles["form-element"]}>
-                        <input
-                            type="text"
-                            {...register("username")}
-                            id='username'
-                        />
-                        {errors.username && <span className={styles["inputError"]}>Please enter a valid email or phone number.</span>}
-                        <label className={styles["floating-label"]} htmlFor="username">Email or Phone Number</label>
-                    </div>
+
+                    <label className={styles["readyOnly"]} htmlFor="username">Email</label>
+
+                    <input className={styles["readyOnly"]}
+                        {...register("username")}
+                        value={user.username}
+                    />
 
                     <div className={styles["form-element"]}>
                         <input
                             type="password"
+                            name='password'
                             {...register("password")}
                             id='password'
 

@@ -1,4 +1,4 @@
-
+import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import { object, string } from 'yup';
@@ -9,6 +9,7 @@ import Border from '../../components/Border';
 import Footer from "../../components/Footer";
 import Credits from '../../components/Credits';
 import styles from './styles.module.css'
+import UserContext from '../../contexts/userContext';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -26,18 +27,23 @@ import card4 from "../../images/card4.png";
 
 
 const SignUp = () => {
-    const navigate = useNavigate();
+
     const schema = object({
         username: string().required().email(),
     })
-
-
-    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+    });
+    const { register: register2, handleSubmit: handleSubmit2, formState: formState2 } = useForm({
         resolver: yupResolver(schema),
     });
 
+    const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext)
     const createAccount = data => {
-        console.log(data)
+
+        setUser({ username: data.username, password: data.password });
+
         if (data.username) {
             navigate("/signUp/RegForm");
         }
@@ -89,6 +95,7 @@ const SignUp = () => {
 
                             <input
                                 type="email"
+                                name='username'
                                 {...register("username")}
                                 id='username'
                             />
@@ -238,11 +245,12 @@ const SignUp = () => {
                     </div>
                     <div className={styles['accordion-form']}>
                         <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
-                        <form className={styles["form-element"]} onSubmit={handleSubmit(createAccount)}>
+                        <form className={styles["form-element"]} onSubmit={handleSubmit2(createAccount)}>
 
                             <input
                                 type="email"
-                                {...register("username")}
+                                name='username'
+                                {...register2("username")}
                                 id='username'
                             />
                             <label className={styles["floating-label"]} htmlFor="email">Email Address</label>
@@ -252,7 +260,7 @@ const SignUp = () => {
                             </button>
 
                         </form>
-                        {errors.username && <span className={styles["inputError"]}>Please enter a valid email address</span>}
+                        {formState2.errors.username && <span className={styles["inputError"]}>Please enter a valid email address</span>}
                     </div>
 
                 </div>

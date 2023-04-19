@@ -57,6 +57,18 @@
   display: block;
   font-size: 16px;
 }
+.form input.readyOnly {
+  border: none;
+  color: #333;
+  word-wrap: break-word;
+  font-weight: 500;
+  outline: none;
+  cursor: none;
+}
+.form label.readyOnly {
+  color: #333;
+  margin: 10px 0;
+}
 .floating-label {
   box-sizing: border-box;
   width: 100%;

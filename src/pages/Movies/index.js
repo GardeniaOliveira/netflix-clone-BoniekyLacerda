@@ -6,8 +6,14 @@ import Tmdb from "../../Tmdb";
 import Header from "../../components/Header";
 import FeaturedMovie from "../../components/FeaturedMovie";
 import MovieRow from "../../components/MovieRow";
+import UserContext from '../../contexts/userContext';
+import { useContext } from 'react';
 
 const Movies = () => {
+
+    const { user, setUser } = useContext(UserContext)
+
+    console.log(user);
 
     const [movieList, setMovieList] = useState([])
     const [featuredData, setFeaturedData] = useState(null)

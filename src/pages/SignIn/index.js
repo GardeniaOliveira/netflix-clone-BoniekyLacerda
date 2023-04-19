@@ -8,11 +8,15 @@ import HeaderLogo from "../../components/HeaderLogo";
 import Footer from "../../components/Footer";
 import Credits from '../../components/Credits';
 import LanguageIcon from '@mui/icons-material/Language';
+import { useContext } from 'react';
+import UserContext from '../../contexts/userContext';
 
 
 const SignIn = () => {
     const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext)
 
+    console.log(user);
     const schema = object({
         username: string().required().email(),
         password: string().required().min(4, 'Your password must contain between 4 and 60 characters.')
@@ -20,11 +24,12 @@ const SignIn = () => {
     })
 
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
     });
     const loginUser = data => {
-        console.log(data)
+        setUser({ username: data.username, password: data.password });
+
         if (data.username && data.password) {
             navigate("/movies");
         }
@@ -60,6 +65,7 @@ const SignIn = () => {
                     <div className={styles["form-element"]}>
                         <input
                             type="text"
+                            name='username'
                             {...register("username")}
                             id='username'
                         />
@@ -70,6 +76,7 @@ const SignIn = () => {
                     <div className={styles["form-element"]}>
                         <input
                             type="password"
+                            name='password'
                             {...register("password")}
                             id='password'
 
