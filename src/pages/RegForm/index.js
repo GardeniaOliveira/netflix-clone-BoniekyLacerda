@@ -11,20 +11,21 @@ import Footer from './components/RegFormFooter';
 const RegForm = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const loginUser = data => {
+
+    const createAccount = data => {
         console.log(data)
         if (data.username && data.password) {
-            navigate("/movies");
+            navigate("/signUp/RegForm2");
         }
 
     };
-    const createAccount = () => {
+    const login = () => {
 
-        navigate("/signUp");
+        navigate("/");
 
     };
 
-    const [isChecked, setIsChecked] = useState(true);
+    const [isChecked, setIsChecked] = useState(false);
     const handleOnChange = () => {
         setIsChecked(!isChecked);
     };
@@ -35,13 +36,14 @@ const RegForm = () => {
             <Header
                 logo={logo}
                 text='Sign In'
+                action={login}
 
             />
 
             <div className={styles['container']}>
 
                 <form className={styles['form']}>
-                    <p className={styles['step']}>STEP <span>1</span>  OF <span>3</span></p>
+                    <p className={styles['step']}>STEP <span>1</span>  OF <span>2</span></p>
 
                     <h1>Create a password to start your membership</h1>
 
@@ -80,7 +82,7 @@ const RegForm = () => {
                         <label>Please do not email me Netflix special offers </label>
                     </div>
 
-                    <button type='submit' onClick={handleSubmit(loginUser)}>Next</button>
+                    <button type='submit' onClick={handleSubmit(createAccount)}>Next</button>
                 </form>
 
             </div >

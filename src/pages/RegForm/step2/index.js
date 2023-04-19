@@ -7,6 +7,7 @@ import styles from './styles.module.css'
 import logo from "../../../images/netflix-logo.png"
 import Header from '../components/RegFormHeader';
 import Footer from '../components/RegFormFooter';
+import { SignLanguage } from "@mui/icons-material";
 
 
 const RegForm2 = () => {
@@ -15,11 +16,15 @@ const RegForm2 = () => {
 
     const createAccount = () => {
 
-        navigate("/signUp");
+        navigate("/movies");
 
     };
 
+    const login = () => {
 
+        navigate("/");
+
+    };
 
 
     return (
@@ -27,6 +32,7 @@ const RegForm2 = () => {
             <Header
                 logo={logo}
                 text='Sign In'
+                action={login}
 
             />
 
@@ -34,9 +40,9 @@ const RegForm2 = () => {
 
                 <form className={styles['form']}>
                     <CheckCircleOutlineIcon className={styles['circle-icon']} sx={{ fontSize: 60 }} />
-                    <p className={styles['step']}>STEP <span>2</span>  OF <span>3</span></p>
+                    <p className={styles['step']}>STEP <span>2</span>  OF <span>2</span></p>
 
-                    <h1>Choose your plan.</h1>
+                    <h1>Enjoy your account.</h1>
                     <div>
                         <DoneIcon sx={{ color: '#e50914', fontSize: 26 }} />
                         <p>No commitments, cancel anytime.</p>

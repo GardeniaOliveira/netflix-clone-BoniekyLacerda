@@ -2,7 +2,6 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 
-import HeaderLogo from "../../components/HeaderLogo";
 import CardStory from './CardStory';
 import Border from '../../components/Border';
 import Footer from "../../components/Footer";
@@ -29,7 +28,7 @@ const SignUp = () => {
     const createAccount = data => {
         console.log(data)
         if (data.username) {
-            navigate("/");
+            navigate("/signUp/RegForm");
         }
 
     };
