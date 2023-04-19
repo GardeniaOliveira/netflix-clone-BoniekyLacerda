@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CardStory from './CardStory';
 import Border from '../../components/Border';
 import Footer from "../../components/Footer";
+import Credits from '../../components/Credits';
 import styles from './styles.module.css'
 
 import Accordion from '@mui/material/Accordion';
@@ -12,6 +13,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import LanguageIcon from '@mui/icons-material/Language';
 
 import logo from "../../images/netflix-logo.png";
 import card1 from "../../images/card1.png";
@@ -54,7 +56,7 @@ const SignUp = () => {
                         <div className={styles['header-items']}>
                             <div className={styles["language"]}>
                                 <div className="icon">
-                                    🌐
+                                    <LanguageIcon />
                                 </div>
                                 <select name="language" className={styles['select-language']} >
                                     <option value="english">English</option>
@@ -275,17 +277,18 @@ const SignUp = () => {
 
                     <div className={styles["language"]}>
                         <div className="icon">
-                            🌐
+                            <LanguageIcon />
                         </div>
                         <select name="language" className={styles['select-language']} >
                             <option value="english">English</option>
-                            {/* <option value="Portuguese">Portuguese</option> */}
+                            <option value="Portuguese">Portuguese</option>
 
                         </select>
                     </div>
 
-
+                    <Credits />
                 </Footer>
+
             </div>
         </div >
     )

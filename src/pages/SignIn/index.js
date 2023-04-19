@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import styles from './styles.module.css'
 import HeaderLogo from "../../components/HeaderLogo";
 import Footer from "../../components/Footer";
+import Credits from '../../components/Credits';
+import LanguageIcon from '@mui/icons-material/Language';
 
 
 const SignIn = () => {
@@ -124,7 +126,7 @@ const SignIn = () => {
 
                 <div className={styles["footer-language"]}>
                     <div className="icon">
-                        🌐
+                        <LanguageIcon />
                     </div>
                     <select name="language" className={styles['select-language']} >
                         <option value="english">English</option>
@@ -132,7 +134,7 @@ const SignIn = () => {
 
                     </select>
                 </div>
-
+                <Credits />
 
             </Footer>
 

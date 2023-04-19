@@ -1,4 +1,6 @@
 import styles from './styles.module.css'
+import LanguageIcon from '@mui/icons-material/Language';
+import Credits from '../../../../components/Credits';
 
 
 const Footer = () => {
@@ -19,7 +21,7 @@ const Footer = () => {
 
             <div className={styles["footer-language"]}>
                 <div className="icon">
-                    🌐
+                    <LanguageIcon />
                 </div>
                 <select name="language" className={styles['select-language']} >
                     <option value="english">English</option>
@@ -28,7 +30,7 @@ const Footer = () => {
                 </select>
             </div>
 
-
+            <Credits />
         </footer>
     )
 }
