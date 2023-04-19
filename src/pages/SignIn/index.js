@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { object, string } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from "react-router-dom";
 import styles from './styles.module.css'
 import HeaderLogo from "../../components/HeaderLogo";
@@ -10,7 +12,17 @@ import LanguageIcon from '@mui/icons-material/Language';
 
 const SignIn = () => {
     const navigate = useNavigate();
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    const schema = object({
+        username: string().required().email(),
+        password: string().required().min(4, 'Your password must contain between 4 and 60 characters.')
+
+    })
+
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+    });
     const loginUser = data => {
         console.log(data)
         if (data.username && data.password) {
@@ -48,21 +60,21 @@ const SignIn = () => {
                     <div className={styles["form-element"]}>
                         <input
                             type="text"
-                            {...register("username", { required: true })}
+                            {...register("username")}
                             id='username'
                         />
-                        {errors.username && <span className={styles["inputError"]}>Please enter a valid email or phone number.</span>}
-                        <label className={styles["floating-label"]} htmlFor="username">Email or Phone Number</label>
+                        {errors?.username && <span className={styles["inputError"]}>Please enter a valid email address.</span>}
+                        <label className={styles["floating-label"]} htmlFor="username">Email </label>
                     </div>
 
                     <div className={styles["form-element"]}>
                         <input
                             type="password"
-                            {...register("password", { required: true })}
+                            {...register("password")}
                             id='password'
 
                         />
-                        {errors.password && <span className={styles["inputError"]}>Your password must contain between 4 and 60 characters.</span>}
+                        {errors?.password && <span className={styles["inputError"]}>Your password must contain between 4 and 60 characters.</span>}
                         <label className={styles["floating-label"]} htmlFor="password">Password</label>
                     </div>
 

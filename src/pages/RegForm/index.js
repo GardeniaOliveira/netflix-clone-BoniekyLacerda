@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { object, string } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from "react-router-dom";
 import styles from './styles.module.css'
 
@@ -10,7 +12,15 @@ import Footer from './components/RegFormFooter';
 
 const RegForm = () => {
     const navigate = useNavigate();
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const schema = object({
+        password: string().required().min(4, 'Your password must contain between 4 and 60 characters.')
+
+    })
+
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+    });
 
     const createAccount = data => {
         console.log(data)
@@ -53,7 +63,7 @@ const RegForm = () => {
                     <div className={styles["form-element"]}>
                         <input
                             type="text"
-                            {...register("username", { required: true })}
+                            {...register("username")}
                             id='username'
                         />
                         {errors.username && <span className={styles["inputError"]}>Please enter a valid email or phone number.</span>}
@@ -63,7 +73,7 @@ const RegForm = () => {
                     <div className={styles["form-element"]}>
                         <input
                             type="password"
-                            {...register("password", { required: true })}
+                            {...register("password")}
                             id='password'
 
                         />

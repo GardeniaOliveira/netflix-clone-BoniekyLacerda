@@ -1,6 +1,8 @@
 
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
+import { object, string } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import CardStory from './CardStory';
 import Border from '../../components/Border';
@@ -25,7 +27,14 @@ import card4 from "../../images/card4.png";
 
 const SignUp = () => {
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const schema = object({
+        username: string().required().email(),
+    })
+
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+    });
 
     const createAccount = data => {
         console.log(data)
@@ -80,7 +89,7 @@ const SignUp = () => {
 
                             <input
                                 type="email"
-                                {...register("username", { required: true })}
+                                {...register("username")}
                                 id='username'
                             />
                             <label className={styles["floating-label"]} htmlFor="email">Email Address</label>
@@ -233,7 +242,7 @@ const SignUp = () => {
 
                             <input
                                 type="email"
-                                {...register("username", { required: true })}
+                                {...register("username")}
                                 id='username'
                             />
                             <label className={styles["floating-label"]} htmlFor="email">Email Address</label>
