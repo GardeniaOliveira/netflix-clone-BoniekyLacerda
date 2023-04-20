@@ -1,22 +1,24 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from "react-router-dom";
+
 import styles from './styles.module.css'
 import HeaderLogo from "../../components/HeaderLogo";
 import Footer from "../../components/Footer";
 import Credits from '../../components/Credits';
+
 import LanguageIcon from '@mui/icons-material/Language';
-import { useContext } from 'react';
 import UserContext from '../../contexts/userContext';
 
 
 const SignIn = () => {
-    const navigate = useNavigate();
-    const { user, setUser } = useContext(UserContext)
 
-    console.log(user);
+    const navigate = useNavigate();
+    const { client, setClient } = useContext(UserContext)
+
+    console.log(client);
     const schema = object({
         username: string().required().email(),
         password: string().required().min(4, 'Your password must contain between 4 and 60 characters.')
@@ -28,7 +30,7 @@ const SignIn = () => {
         resolver: yupResolver(schema),
     });
     const loginUser = data => {
-        setUser({ username: data.username, password: data.password });
+        setClient({ username: data.username, password: data.password });
 
         if (data.username && data.password) {
             navigate("/movies");

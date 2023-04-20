@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 import CardStory from './CardStory';
 import Border from '../../components/Border';
@@ -10,6 +11,7 @@ import Footer from "../../components/Footer";
 import Credits from '../../components/Credits';
 import styles from './styles.module.css'
 import UserContext from '../../contexts/userContext';
+import { auth } from '../../firebase/firebaseConfig';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -26,7 +28,16 @@ import card4 from "../../images/card4.png";
 
 
 
+
 const SignUp = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
 
     const schema = object({
         username: string().required().email(),
@@ -39,10 +50,13 @@ const SignUp = () => {
     });
 
     const navigate = useNavigate();
-    const { user, setUser } = useContext(UserContext)
+
+    const { client, setClient } = useContext(UserContext)
     const createAccount = data => {
 
-        setUser({ username: data.username, password: data.password });
+        setClient({ username: data.username, password: data.password });
+
+        createUserWithEmailAndPassword({ username: data.username })
 
         if (data.username) {
             navigate("/signUp/RegForm");

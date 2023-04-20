@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from "react-router-dom";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 import styles from './styles.module.css'
+import { auth } from '../../firebase/firebaseConfig';
 import UserContext from '../../contexts/userContext';
 import logo from "../../images/netflix-logo.png";
 import Header from './components/RegFormHeader';
@@ -12,9 +14,19 @@ import Footer from './components/RegFormFooter';
 
 
 const RegForm = () => {
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+
     const navigate = useNavigate();
 
-    const { user, setUser } = useContext(UserContext)
+    const { client, setClient } = useContext(UserContext)
 
     const schema = object({
         password: string().required().min(4, 'Your password must contain between 4 and 60 characters.')
@@ -27,7 +39,10 @@ const RegForm = () => {
     });
 
     const createAccount = data => {
-        setUser({ username: data.username, password: data.password });
+        setClient({ username: data.username, password: data.password });
+
+        createUserWithEmailAndPassword(data.username, data.password)
+
         if (data.username && data.password) {
             navigate("/signUp/RegForm2");
         }
@@ -69,7 +84,7 @@ const RegForm = () => {
 
                     <input className={styles["readyOnly"]}
                         {...register("username")}
-                        value={user.username}
+                        value={client.username}
                     />
 
                     <div className={styles["form-element"]}>

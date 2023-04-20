@@ -10,9 +10,9 @@ import Movies from "./pages/Movies";
 
 
 export const Router = () => {
-    const [user, setUser] = useState('')
+    const [client, setClient] = useState('')
     return (
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ client, setClient }}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<SignIn />} />
