@@ -1,19 +1,25 @@
 
 import { useState, useEffect } from "react";
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../firebase/firebaseConfig';
 
 import styles from './styles.module.css'
 import Tmdb from "../../Tmdb";
 import Header from "../../components/Header";
-import FeaturedMovie from "../../components/FeaturedMovie";
-import MovieRow from "../../components/MovieRow";
+import Footer from "../../components/Footer";
+import FeaturedMovie from "./FeaturedMovie";
+import MovieRow from "./MovieRow";
 import UserContext from '../../contexts/userContext';
 import { useContext } from 'react';
 
 const Movies = () => {
 
-    const { user, setUser } = useContext(UserContext)
+    const { client, setClient } = useContext(UserContext);
 
-    console.log(user);
+    const handleSignOut = () => {
+        signOut(auth);
+    }
 
     const [movieList, setMovieList] = useState([])
     const [featuredData, setFeaturedData] = useState(null)
@@ -59,7 +65,12 @@ const Movies = () => {
 
         <div className="page">
 
-            <Header black={headerBlack} />
+            <Header
+                black={headerBlack}
+                action={handleSignOut}
+                username={client.username}
+
+            />
 
             {/* when there is a feature movie, so showed the component  */}
             {featuredData &&
@@ -71,8 +82,30 @@ const Movies = () => {
 
                 ))}
             </section>
+
             <footer>
-                Project based on Bonieky Lacerda's tutorial -  Netflix Image rights - Data from The Movie Database Api  <br />
+                <Footer>
+                    <div className={styles['footer-links']}>
+
+                        <a href="https://github.com/GardeniaOliveira">Audio Description</a>
+                        <a href='https://github.com/GardeniaOliveira' >Help Center</a>
+                        <a href="https://github.com/GardeniaOliveira">Gift Cards</a>
+                        <a href="https://github.com/GardeniaOliveira">Media Center</a>
+                        <a href="https://github.com/GardeniaOliveira">Investor Relations</a>
+                        <a href="https://github.com/GardeniaOliveira"> Jobs</a>
+                        <a href="https://github.com/GardeniaOliveira">Terms of Use</a>
+                        <a href="https://github.com/GardeniaOliveira">Privacy</a>
+                        <a href="https://github.com/GardeniaOliveira">Legal Notices</a>
+                        <a href="https://github.com/GardeniaOliveira">Cookie Preferences</a>
+                        <a href="https://github.com/GardeniaOliveira">Corporate Information</a>
+                        <a href="https://github.com/GardeniaOliveira">Contact Us</a>
+                    </div>
+
+                </Footer>
+
+                <div>
+                    Netflix Image rights - Project based on Bonieky Lacerda's tutorial - Update by Gardênia Oliveira - Data from The Movie Database Api  <br />
+                </div>
             </footer>
 
             {movieList.length <= 0 &&

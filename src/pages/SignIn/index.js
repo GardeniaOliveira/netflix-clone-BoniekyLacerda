@@ -3,28 +3,30 @@ import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from "react-router-dom";
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 import styles from './styles.module.css'
 import HeaderLogo from "../../components/HeaderLogo";
 import Footer from "../../components/Footer";
 import Credits from '../../components/Credits';
 
+
 import LanguageIcon from '@mui/icons-material/Language';
 import UserContext from '../../contexts/userContext';
+import { auth } from '../../firebase/firebaseConfig';
 
 
 const SignIn = () => {
 
+    const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
+
     const navigate = useNavigate();
     const { client, setClient } = useContext(UserContext)
 
-    console.log(client);
     const schema = object({
         username: string().required().email(),
         password: string().required().min(4, 'Your password must contain between 4 and 60 characters.')
-
     })
-
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
@@ -32,15 +34,14 @@ const SignIn = () => {
     const loginUser = data => {
         setClient({ username: data.username, password: data.password });
 
-        if (data.username && data.password) {
+        signInWithEmailAndPassword(data.username, data.password)
+
+        if (user) {
             navigate("/movies");
         }
-
     };
     const createAccount = () => {
-
         navigate("/signUp");
-
     };
 
     const [isChecked, setIsChecked] = useState(true);
@@ -51,7 +52,6 @@ const SignIn = () => {
     const [info, setInfo] = useState(false);
     const handleShowInfo = (info) => {
         setInfo(true);
-
     };
 
 

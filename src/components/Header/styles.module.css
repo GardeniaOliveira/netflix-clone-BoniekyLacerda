@@ -18,16 +18,29 @@ header.black {
 .header--logo {
   height: 35px;
 }
-
-.header--user {
-  height: 35px;
+.header-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
-.header--logo img,
-.header--user img {
+.header-items button {
+  width: auto;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0.6rem 1.5rem;
+  background: rgb(229, 9, 20);
+  color: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.header-items button:hover {
+  background-color: #141414;
+}
+.header--logo img {
   height: 100%;
-}
-
-.header--user img {
-  border-radius: 3px;
 }

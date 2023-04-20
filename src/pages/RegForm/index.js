@@ -14,8 +14,6 @@ import Footer from './components/RegFormFooter';
 
 
 const RegForm = () => {
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
     const [
         createUserWithEmailAndPassword,
         user,

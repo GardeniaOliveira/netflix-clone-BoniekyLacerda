@@ -1,4 +1,4 @@
-import './FeaturedMovie.css';
+import './styles.css';
 const FeatureMovie = ({ item }) => {
     console.log(item);
 

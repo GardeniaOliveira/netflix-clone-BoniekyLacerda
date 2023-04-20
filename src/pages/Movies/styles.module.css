@@ -21,6 +21,23 @@ footer {
   text-align: center;
   padding: 10px 0;
 }
+.footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0 1rem;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: #808080;
+  text-align: left;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-decoration: none;
+}
 
 .loading {
   display: flex;
