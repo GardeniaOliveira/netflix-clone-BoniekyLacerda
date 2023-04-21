@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -26,6 +26,20 @@ const RegForm = () => {
 
     const { client, setClient } = useContext(UserContext)
 
+    //save on session storage 
+    useEffect(() => {
+        if (client.username) {
+            sessionStorage.setItem('client', client.username);
+        } else {
+            const userEmail = sessionStorage.getItem('client')
+            if (userEmail) {
+                setClient({ username: userEmail });
+            }
+        }
+
+    }, [client.username, setClient]);
+
+    //validation
     const schema = object({
         password: string().required().min(4, 'Your password must contain between 4 and 60 characters.')
 

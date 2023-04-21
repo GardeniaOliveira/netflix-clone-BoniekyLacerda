@@ -21,6 +21,7 @@ const SignIn = () => {
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
 
     const navigate = useNavigate();
+
     const { client, setClient } = useContext(UserContext)
 
     const schema = object({
@@ -34,12 +35,14 @@ const SignIn = () => {
     const loginUser = data => {
         setClient({ username: data.username, password: data.password });
 
+
         signInWithEmailAndPassword(data.username, data.password)
 
         if (user) {
             navigate("/movies");
         }
     };
+
     const createAccount = () => {
         navigate("/signUp");
     };
