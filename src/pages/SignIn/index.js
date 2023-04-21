@@ -14,6 +14,7 @@ import Credits from '../../components/Credits';
 import LanguageIcon from '@mui/icons-material/Language';
 import UserContext from '../../contexts/userContext';
 import { auth } from '../../firebase/firebaseConfig';
+import privateRoute from '../../Routes/privateRoute';
 
 
 const SignIn = () => {
@@ -33,12 +34,11 @@ const SignIn = () => {
         resolver: yupResolver(schema),
     });
     const loginUser = data => {
-        setClient({ username: data.username, password: data.password });
-
-
         signInWithEmailAndPassword(data.username, data.password)
 
         if (user) {
+            setClient({ username: data.username, isLogged: true });
+
             navigate("/movies");
         }
     };

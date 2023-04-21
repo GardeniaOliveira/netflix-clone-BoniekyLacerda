@@ -34,6 +34,8 @@ const RegForm = () => {
             const userEmail = sessionStorage.getItem('client')
             if (userEmail) {
                 setClient({ username: userEmail });
+            } else {
+                navigate('/signUp')
             }
         }
 

@@ -1,18 +1,30 @@
 
+import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { SignLanguage } from "@mui/icons-material";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import DoneIcon from '@mui/icons-material/Done';
 import styles from './styles.module.css'
 import logo from "../../../images/netflix-logo.png"
+
 import Header from '../components/RegFormHeader';
 import Footer from '../components/RegFormFooter';
-import { SignLanguage } from "@mui/icons-material";
+import UserContext from "../../../contexts/userContext";
 
 
 const RegForm2 = () => {
     const navigate = useNavigate();
 
+    const { client, setClient } = useContext(UserContext)
+
+
+    useEffect(() => {
+        if (!client.username && !client.password) {
+            navigate('/signUp')
+        }
+
+    }, [client.password, client.username, navigate, setClient]);
 
     const createAccount = () => {
 
