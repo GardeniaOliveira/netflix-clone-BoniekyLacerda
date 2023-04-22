@@ -1,7 +1,4 @@
 .container {
-  background-color: white;
-}
-.container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,6 +6,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 .form {
@@ -94,7 +92,7 @@ input:valid ~ .floating-label {
   padding: 6px 3px;
   font-size: 13px;
 }
-form button {
+.form button {
   height: 50px;
   background: #e50914;
   border-radius: 4px;
@@ -126,4 +124,14 @@ form button {
   background-color: #fff;
   border: 1px solid;
   content: "";
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    min-height: 0;
+    padding: 30px 20px 50px 20px;
+  }
+  .form button {
+    min-height: 64px;
+  }
 }

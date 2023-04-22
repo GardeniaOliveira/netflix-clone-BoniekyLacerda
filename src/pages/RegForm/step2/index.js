@@ -67,9 +67,6 @@ const RegForm2 = () => {
                         <DoneIcon sx={{ color: '#e50914', fontSize: 26 }} />
                         <p>Unlimited viewing on all your devices.</p>
                     </div>
-
-
-
                     <button type='submit' onClick={(createAccount)}>Next</button>
                 </form>
 

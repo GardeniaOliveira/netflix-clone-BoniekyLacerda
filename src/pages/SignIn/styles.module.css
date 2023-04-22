@@ -98,7 +98,7 @@ input:valid ~ .floating-label {
   padding: 6px 3px;
   font-size: 13px;
 }
-form button {
+.form button {
   height: 50px;
   background: #e50914;
   border-radius: 4px;

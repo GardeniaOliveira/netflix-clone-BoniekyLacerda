@@ -88,7 +88,7 @@ const SignUp = () => {
 
                                 </select>
                             </div>
-                            <button type='submit' onClick={handleSubmit(login)}>Sign In </button>
+                            <button type='submit' onClick={(login)}>Sign In </button>
                         </div>
                     </div>
 
