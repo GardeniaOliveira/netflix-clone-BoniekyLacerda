@@ -260,3 +260,56 @@ h5 {
   border: none;
   font-size: 16px;
 }
+
+@media only screen and (max-width: 600px) {
+  .header-container {
+    padding: 1rem 2rem;
+    justify-content: space-between;
+  }
+  .header-logo {
+    width: 89px;
+    height: 54px;
+  }
+  .language {
+    display: none;
+  }
+  .form-element {
+    flex-wrap: wrap;
+  }
+  .description {
+    padding: 1rem 2rem;
+    align-items: flex-start;
+  }
+  .description h1 {
+    font-size: 40px;
+  }
+  .description h3,
+  .description p {
+    font-size: 18px;
+  }
+
+  .accordion {
+    padding: 0;
+  }
+  .accordion-container {
+    padding: 1rem 2rem;
+  }
+  .accordion-container h2 {
+    font-size: 32px;
+  }
+  .accordion-container h3 {
+    margin-top: 20px;
+  }
+  .accordion-container h3,
+  .accordion div p {
+    font-size: 18px;
+  }
+  .accordion-form {
+    padding-right: 0;
+    font-size: 18px;
+  }
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
