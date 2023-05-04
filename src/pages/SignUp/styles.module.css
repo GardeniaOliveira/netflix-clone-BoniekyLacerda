@@ -261,7 +261,7 @@ h5 {
   font-size: 16px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 820px) {
   .header-container {
     padding: 1rem 2rem;
     justify-content: space-between;
@@ -275,10 +275,12 @@ h5 {
   }
   .form-element {
     flex-wrap: wrap;
+    margin: 1rem 0;
   }
   .description {
     padding: 1rem 2rem;
     align-items: flex-start;
+    margin-top: 0;
   }
   .description h1 {
     font-size: 40px;
@@ -312,4 +314,14 @@ h5 {
     display: grid;
     grid-template-columns: 1fr;
   }
+}
+
+/* @media only screen and (min-width: 820px) {
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+} */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 }

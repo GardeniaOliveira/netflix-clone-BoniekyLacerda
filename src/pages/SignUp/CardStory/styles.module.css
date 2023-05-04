@@ -1,20 +1,14 @@
-.card-container {
+.card-container,
+.card-container-rowReverse {
   min-height: 30rem;
   background-color: black;
   display: flex;
-
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 .card-container-rowReverse {
-  min-height: 30rem;
-  background-color: black;
-  display: flex;
   flex-direction: row-reverse;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
 }
 .card-content {
   width: 50%;
@@ -53,5 +47,14 @@
 
   .card-content p {
     font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .card-container {
+    flex-wrap: nowrap;
+  }
+  .card-container-rowReverse {
+    flex-wrap: nowrap;
   }
 }
