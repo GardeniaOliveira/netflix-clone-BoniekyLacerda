@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -20,7 +20,6 @@ import { auth } from '../../firebase/firebaseConfig';
 const SignIn = () => {
 
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
-
     const navigate = useNavigate();
 
     const { client, setClient } = useContext(UserContext)
@@ -35,13 +34,15 @@ const SignIn = () => {
     });
     const loginUser = data => {
         signInWithEmailAndPassword(data.username, data.password)
+        setClient({ username: data.username, isLogged: true });
+    };
 
+    useEffect(() => {
         if (user) {
-            setClient({ username: data.username, isLogged: true });
-
             navigate("/movies");
         }
-    };
+    }, [navigate, user])
+
 
     const createAccount = () => {
         navigate("/signUp");
