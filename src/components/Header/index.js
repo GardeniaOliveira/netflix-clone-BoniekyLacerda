@@ -3,14 +3,12 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import styles from './styles.module.css'
 import logo from '../../images/netflix-logo.png'
-import { red } from '@mui/material/colors';
-
-
 
 
 const Header = ({ black, username, action }) => {
+
     return (
-        <header className={black ? 'black' : ''}>
+        <header className={black ? styles.black : ''}>
             <div className={styles['header--logo']}>
                 <Link to="/">
                     <img src={logo} alt="Netflix logo" />
