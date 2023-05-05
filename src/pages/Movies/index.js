@@ -19,6 +19,7 @@ const Movies = () => {
 
     const handleSignOut = () => {
         signOut(auth);
+        window.location.href = window.location.href;
     }
 
     const [movieList, setMovieList] = useState([])
