@@ -4,8 +4,6 @@ import { useContext } from "react";
 
 const PrivateRoute = ({ children }) => {
     const { client } = useContext(UserContext)
-
-    console.log(client);
     return client.isLogged ? children : <Navigate to="/" />;
 }
 
