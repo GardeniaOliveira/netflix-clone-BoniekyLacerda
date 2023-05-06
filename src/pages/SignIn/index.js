@@ -5,6 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+
 import styles from './styles.module.css'
 import HeaderLogo from "../../components/HeaderLogo";
 import Footer from "../../components/Footer";
@@ -14,6 +17,7 @@ import Credits from '../../components/Credits';
 import LanguageIcon from '@mui/icons-material/Language';
 import UserContext from '../../contexts/userContext';
 import { auth } from '../../firebase/firebaseConfig';
+import { FIREBASE_ERRORS } from '../../firebase/firebaseErrors';
 
 
 
@@ -22,6 +26,7 @@ const SignIn = () => {
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
 
+    console.log(error?.message)
     const { client, setClient } = useContext(UserContext)
 
     const schema = object({
@@ -67,6 +72,14 @@ const SignIn = () => {
                 <HeaderLogo />
                 <form className={styles['form']}>
                     <h1>Sign In</h1>
+
+                    {
+                        error?.message ? (<Stack sx={{ width: '100%', bgcolor: '#e87c03', borderRadius: 5, marginBottom: 2 }} spacing={2}>
+                            <Alert sx={{ bgcolor: '#e87c03' }} icon={false} variant="filled" severity="warning">
+                                {FIREBASE_ERRORS[error?.message]}
+                            </Alert>
+                        </Stack>) : null
+                    }
 
                     <div className={styles["form-element"]}>
                         <input
